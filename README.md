@@ -7,6 +7,6 @@
 
 ---
 
-[クレジットカード発行者検索] https://astrsk-saki.github.io/creditcard-bincode2issuer/
+[クレジットカード発行者検索](https://astrsk-saki.github.io/creditcard-bincode2issuer/)
 
 ハイフンとか入れないでください。
