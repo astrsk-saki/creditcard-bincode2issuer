@@ -10,10 +10,6 @@
 <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
 <link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
 
-<!--&#91;if lt IE 9&#93;>
-<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
-<!&#91;endif&#93;-->
 <link rel="shortcut icon" href="">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script src="https://gist.github.com/matsubo/2c91c9cbedf17a490dca.js"></script>
@@ -21,8 +17,6 @@
 $(function() {
 
   $('.gist').hide();
-
-
 
   var parseHtml = function(){
     var contents = document.getElementById('file-credit_card_bin_codes-md-readme');
@@ -38,7 +32,6 @@ $(function() {
     });
     return list
   }
-
 
   var module = (function() {
     var _list = {};
@@ -56,7 +49,7 @@ $(function() {
   var list = parseHtml();
   module.set(list);
   
-    $('#search').on('click', function(){
+  $('#search').on('click', function(){
     console.log($('#number').val());
     var number = $('#number').val();
     var list = module.get();
@@ -91,7 +84,6 @@ $(function() {
         <div class="column col-2">credit-card number</div>
         <div class="column col-4" id='search_number'>-</div>
     </div>
-
     <div class="columns col-gapless">
         <div class="column col-2">issuer</div>
         <div class="column col-4" id='search_result'>-</div>
@@ -102,9 +94,8 @@ $(function() {
 <div class="container">
 ざっくり実装です。<br>
 ハイフンは入れないでください。<br>
-<a href='https://gist.github.com/matsubo/2c91c9cbedf17a490dca'>こちら</a>を利用しています。
+<a href='https://gist.github.com/matsubo/2c91c9cbedf17a490dca'>こちら</a>のデータを利用しています。
 </div>
-
 <hr>
 <footer>
   <a href="https://github.com/astrsk-saki/creditcard-bincode2issuer" target="_blank">github</a>
