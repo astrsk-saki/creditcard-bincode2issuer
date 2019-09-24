@@ -1,0 +1,111 @@
+<html>
+<head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>クレジット会社検索</title>
+<meta charset="utf-8">
+<meta name="description" content="">
+<meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre.min.css">
+<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-exp.min.css">
+<link rel="stylesheet" href="https://unpkg.com/spectre.css/dist/spectre-icons.min.css">
+
+<!--&#91;if lt IE 9&#93;>
+<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<!&#91;endif&#93;-->
+<link rel="shortcut icon" href="">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://gist.github.com/matsubo/2c91c9cbedf17a490dca.js"></script>
+<script type="text/javascript">
+$(function() {
+
+  $('.gist').hide();
+
+
+
+  var parseHtml = function(){
+    var contents = document.getElementById('file-credit_card_bin_codes-md-readme');
+    var li = contents.querySelectorAll('li');
+
+    var list = {};
+    li.forEach((value) => {
+      var result = value.innerText.split(' ');
+
+      list[result[0].split('-').join('')] = result[1];
+    });
+    return list
+  }
+
+
+  var module = (function() {
+    var _list = {};
+
+    return {
+      set: function(list) {
+        _list = list;
+      },
+      get: function() {
+        return _list;
+      }
+    };
+  })();
+
+  var list = parseHtml();
+  module.set(list);
+  
+    $('#search').on('click', function(){
+    console.log($('#number').val());
+    var number = $('#number').val();
+    var list = module.get();
+
+    $('#search_number').text(number);
+
+    if (list[number] ===undefined){
+      $('#search_result').text('not found');
+    }else{
+      $('#search_result').text(list[number]);
+    }
+  });
+});
+</script>
+</head>
+<body>
+<div class="container">
+
+<h5>クレジット会社検索</h5>
+<div class="column col-2 col-xs-4">
+<form class="form-horizontal">
+<div class="form-group">
+<label class="form-label" for="input-example-3">credit number</label>
+<input type='number' id="number" name="number" placeholder="credit number" class="form-input" maxlength='6' size='10'><br>
+<button id='search' type='button' class="btn btn-primary input-group-btn">Search</button>
+</div>
+</form>
+</div>
+
+<div class="container">
+    <div class="columns">
+        <div class="column col-2">credit number</div>
+        <div class="column col-4" id='search_number'>-</div>
+    </div>
+
+    <div class="columns col-gapless">
+        <div class="column col-2">issuer</div>
+        <div class="column col-4" id='search_result'>-</div>
+    </div>
+</div>
+
+<br>
+<div class="container">
+ざっくり実装です。<br>
+ハイフンは入れないでください。<br>
+<a href='https://gist.github.com/matsubo/2c91c9cbedf17a490dca'>こちら</a>を利用しています。
+</div>
+
+
+<footer>
+</footer>
+</div>
+</body>
+</html>
