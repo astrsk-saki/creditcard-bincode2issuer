@@ -32,7 +32,9 @@ $(function() {
     li.forEach((value) => {
       var result = value.innerText.split(' ');
 
-      list[result[0].split('-').join('')] = result[1];
+      var key = result[0].split('-').join('');
+      result.shift();
+      list[key] = result.join(' ');     
     });
     return list
   }
