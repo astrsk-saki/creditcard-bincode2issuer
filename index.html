@@ -66,6 +66,10 @@ $(function() {
       $('#search_result').html(list[number]);
     }
   });
+  
+  function sliceMaxLength(elem, maxLength) {  
+    elem.value = elem.value.slice(0, maxLength);  
+  }    
 });
 </script>
 </head>
