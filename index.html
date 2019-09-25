@@ -28,7 +28,11 @@ $(function() {
 
       var key = result[0].split('-').join('');
       result.shift();
-      list[key] = result.join(' ');     
+      if (list[key] === undefined){
+        list[key] = result.join(' ');
+      }else{
+        list[key] += '<br>'+result.join(' ');
+      }
     });
     return list
   }
@@ -56,10 +60,10 @@ $(function() {
 
     $('#search_number').text(number);
 
-    if (list[number] ===undefined){
+    if (list[number] === undefined){
       $('#search_result').text('not found');
     }else{
-      $('#search_result').text(list[number]);
+      $('#search_result').html(list[number]);
     }
   });
 });
@@ -93,13 +97,8 @@ $(function() {
 <br>
 <div class="container">
 ざっくり実装です。<br>
-<a href='https://gist.github.com/matsubo/2c91c9cbedf17a490dca'>こちら</a>のデータを利用しています。<br>
+<a href='https://gist.github.com/matsubo/2c91c9cbedf17a490dca' target="_blank">こちら</a>のデータを利用しています。<br>
 数字のみ入力です。(ハイフンなどは入れないでください。)<br>
-同じ番号が２つ以上あるときは、後ろのものが検索されます。<br>
-例)<br>
-454286 VIEW-VISA<br>
-454286 VIEW-VISA マイシティ新宿カード<br>
-上記の場合、｢VIEW-VISA マイシティ新宿カード｣が検索されます。<br>
 </div>
 <hr>
 <footer>
